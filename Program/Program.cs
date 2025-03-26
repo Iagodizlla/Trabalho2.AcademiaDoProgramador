@@ -5,16 +5,28 @@
         static void Main(string[] args)
         {
             Console.Write("Qual o tamanho da Grid(X e Y)? ");
-            int X = int.Parse(Console.ReadLine()!);
-            int Y = int.Parse(Console.ReadLine()!);
+            string tg = Console.ReadLine()!;
+            char[] separadores = { ' ' };
+            string[] grid = tg.Split(separadores);
+            int XM = int.Parse(grid[0]), YM = int.Parse(grid[1]);
 
-            Console.WriteLine("Qual o posicao inicial do robo?");
-            int Xinicial = int.Parse(Console.ReadLine()!);
-            int Yinicial = int.Parse(Console.ReadLine()!);
-            char ladoinicial = char.Parse(Console.ReadLine()!);
+            Console.Write("Qual o posicao inicial do robo? ");
+            string pi = Console.ReadLine()!;
+            string[] posicaoI = pi.Split(separadores);
+            int XI = int.Parse(posicaoI[0]), YI = int.Parse(posicaoI[1]);
+            char LI = char.Parse(posicaoI[2]);
 
-            Console.WriteLine("Qual a movimentacao do robo(E, D e M)?");
-            string movi = Console.ReadLine()!;
+            Console.Write("Qual a movimentacao do robo(E, D e M)? ");
+            string movimentos = Console.ReadLine()!.ToUpper();
+            char[] movi = movimentos.ToCharArray();
+
+            for (int i = 0; i < movi.Length; i++)
+            {
+                Console.WriteLine($"Movimento {i}: {movi[i]}");
+            }
+            Console.WriteLine($"posicao inicial: {XI}, {YI}, {LI}");
+            Console.WriteLine($"grid: {XM}, {YM}");
+            Console.ReadLine();
         }
     }
 }
