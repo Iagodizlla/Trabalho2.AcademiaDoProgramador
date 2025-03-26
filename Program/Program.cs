@@ -4,6 +4,19 @@
     {
         static void Main(string[] args)
         {
+            Console.Clear();
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("|        * Robô Tupiniquim    *     *|");
+            Console.WriteLine("--------------------------------------");
+
+            Console.WriteLine("|               MENU                 |");
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("|              Sair - 0              |");
+            Console.WriteLine("|            Utilizar - 1            |");
+            Console.WriteLine("|            Tutorial - 2            |");
+            Console.WriteLine("--------------------------------------");
+            byte m = byte.Parse(Console.ReadLine()!);
+
             Console.Write("Qual o tamanho da Grid(X e Y)? ");
             string tg = Console.ReadLine()!;
             char[] separadores = { ' ' };
@@ -14,14 +27,14 @@
 
             for (int j = 0; j < 2; j++)
             {
-                Console.Write($"Qual o posicao inicial do robo {j+1}? ");
+                Console.WriteLine($"Qual o posicao inicial do robo {j+1}? Ex: 4 7 S ");
                 string pi = Console.ReadLine()!;
                 string[] posicaoI = pi.Split(separadores);
                 int XI = int.Parse(posicaoI[0]), YI = int.Parse(posicaoI[1]);
                 char DA = char.Parse(posicaoI[2].ToUpper());
                 int posicaoXAtual = XI, posicaoYAtual = YI;
 
-                Console.Write("Qual a movimentacao do robo(E, D ou M)? ");
+                Console.WriteLine("Qual a movimentacao do robo(E, D ou M)? Ex: EMMDDMEM ");
                 string movimentos = Console.ReadLine()!.ToUpper();
                 char[] movi = movimentos.ToCharArray();
 
