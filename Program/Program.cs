@@ -14,18 +14,78 @@
             string pi = Console.ReadLine()!;
             string[] posicaoI = pi.Split(separadores);
             int XI = int.Parse(posicaoI[0]), YI = int.Parse(posicaoI[1]);
-            char LI = char.Parse(posicaoI[2]);
+            char DA = char.Parse(posicaoI[2]);
 
-            Console.Write("Qual a movimentacao do robo(E, D e M)? ");
+            int posicaoXAtual = XI, posicaoYAtual = YI;
+
+            Console.Write("Qual a movimentacao do robo(E, D ou M)? ");
             string movimentos = Console.ReadLine()!.ToUpper();
             char[] movi = movimentos.ToCharArray();
 
-            for (int i = 0; i < movi.Length; i++)
+
+
+            for (int i = 0;i < movi.Length;i++)
             {
-                Console.WriteLine($"Movimento {i}: {movi[i]}");
+                if (movi[i] == 'E')
+                {
+                    if (DA == 'N')
+                    {
+                        DA = 'O';
+                    }
+                    else if (DA == 'O')
+                    {
+                        DA = 'S';
+                    }
+                    else if (DA == 'S')
+                    {
+                        DA = 'L';
+                    }
+                    else
+                    {
+                        DA = 'N';
+                    }
+                }
+                else if (movi[i] == 'D')
+                {
+                    if (DA == 'N')
+                    {
+                        DA = 'L';
+                    }
+                    else if (DA == 'O')
+                    {
+                        DA = 'N';
+                    }
+                    else if (DA == 'S')
+                    {
+                        DA = 'O';
+                    }
+                    else
+                    {
+                        DA = 'S';
+                    }
+                }
+                else if (movi[i] == 'M')
+                {
+                    if (DA == 'N')
+                    {
+                        posicaoYAtual++;
+                    }
+                    else if (DA == 'O')
+                    {
+                        posicaoXAtual--;
+                    }
+                    else if (DA == 'S')
+                    {
+                        posicaoYAtual--;
+                    }
+                    else
+                    {
+                        posicaoXAtual++;
+                    }
+                }
             }
-            Console.WriteLine($"posicao inicial: {XI}, {YI}, {LI}");
-            Console.WriteLine($"grid: {XM}, {YM}");
+
+            Console.WriteLine($"posicao final: {posicaoXAtual} {posicaoYAtual} {DA}");
             Console.ReadLine();
         }
     }
