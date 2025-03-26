@@ -1,4 +1,6 @@
-﻿namespace Program
+﻿using System.Xml;
+
+namespace Program
 {
     internal class Program
     {
@@ -94,7 +96,24 @@
                 }
                 else if (m == 2)
                 {
-                    Console.WriteLine("Em desenvolvimento...");
+                    Console.WriteLine("Como digitar corretamente a Grid inicial:\n" +
+                        "- A grid inicial é basicamnete o plano cartesiano, só que sem a parte das numeros negativos.\n" +
+                        "- Ela é formada pelos eixos X e Y, onde X é a horizontal e Y a vertical.\n" +
+                        "- Na hora de escrever o tamanho da grid no console, digite: (numero | espaço | numero).\n" +
+                        "- Exemplo: 20 40.\n");
+                    Console.WriteLine("Como digitar corretamente a posicao inicial do robo:\n" +
+                        "- Primeiro se digita em que posicao na grid ele esta, igual falamos no tutorial anterior.\n" +
+                        "- Segunda parte é pra que lado ele está virado Norte(N), Oeste(O), Sul(S) ou Letse(L).\n" +
+                        "- Na hora de escrever isso no console, digite: (numero | espaço | numero | espaço | letra).\n" +
+                        "- Exemplo: 5 8 N.\n");
+                    Console.WriteLine("Como digitar corretamente a movimentacao do robo:\n" +
+                        "- Temos três(3) opções de movimentação, Esquerdo(E), Direito(D) e Medio(M).\n" +
+                        "- As opções E e D, são para o robo virar para o lado, ele não se move de lugar, somente gira no próprio eixo.\n" +
+                        "- A opção M só se move um espaço para frente de forma reta, sem poder se mexer pros lados.\n" +
+                        "- A quantidade de comandos de uma só vez é praticamente ilimitada, podendo ir de 1 comando a 50 se quiser.\n" +
+                        "- Na hora de escrever isso no console, digite: (letra | letra | letra...     ... letra | letra).\n" +
+                        " Exemplo: EMEMMDDMMM");
+                    Console.ReadLine();
                 }
                 else
                 {
