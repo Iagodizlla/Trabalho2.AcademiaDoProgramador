@@ -11,7 +11,6 @@ namespace Program
         public static string[] PerguntarTamanhoGrid(char[] separadores)
         {
             Exibicao.ExibirCabecalho();
-
             Console.WriteLine("Qual o tamanho da Grid(X e Y)? ");
             string tg = Console.ReadLine()!;
             string[] grid = tg.Split(separadores);

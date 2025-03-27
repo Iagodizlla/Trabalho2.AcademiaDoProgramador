@@ -30,7 +30,7 @@ namespace Program
         {
             erro = false;
 
-            for (int i = 0; i < posicaoI.Length - 1; i++)
+            for (int i = 0; i < posicaoI.Length-1; i++)
             {
                 if (int.TryParse(posicaoI[i], out int n))
                 {
@@ -63,17 +63,17 @@ namespace Program
         {
             if (VerificarIfPosicaoFinal(XI, YI, XM, YM) || (DA != 'N' && DA != 'S' && DA != 'O' && DA != 'L'))
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
         public static bool VerificarIfPosicaoFinal(int posicaoXAtual, int posicaoYAtual, int XM, int YM)
         {
             if (posicaoXAtual < 0 || posicaoYAtual < 0 || posicaoXAtual > XM || posicaoYAtual > YM)
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
     }
 }

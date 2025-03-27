@@ -82,11 +82,11 @@ namespace Program
         {
             if (Verificadores.VerificarIfPosicaoFinal(posicaoXAtual, posicaoYAtual, XM, YM))
             {
-                return "Erro";
+                return $"{posicaoXAtual} {posicaoYAtual} {DA}";
             }
             else
             {
-                return $"{posicaoXAtual} {posicaoYAtual} {DA}";
+                return "Erro";
             }
         }
     }
