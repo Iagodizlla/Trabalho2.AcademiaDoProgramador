@@ -1,6 +1,6 @@
 # Trabalho Robô Tupiniquim
 
-![]()
+![](https://i.imgur.com/1PgTZB2.gif)
 
 ## Introdução
 
