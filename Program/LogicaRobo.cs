@@ -38,6 +38,7 @@ namespace Program
             {
                 case 'N': posicaoYAtual++; break;
                 case 'S': posicaoYAtual--; break;
+                default: break;
             }
             return posicaoYAtual;
         }
@@ -45,8 +46,9 @@ namespace Program
         {
             switch (DA)
             {
-                case 'O': posicaoXAtual++; break;
-                case 'L': posicaoXAtual--; break;
+                case 'O': posicaoXAtual--; break;
+                case 'L': posicaoXAtual++; break;
+                default: break;
             }
             return posicaoXAtual;
         }
