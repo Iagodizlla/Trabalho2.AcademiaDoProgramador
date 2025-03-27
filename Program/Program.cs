@@ -12,6 +12,7 @@ namespace Program
                 Console.WriteLine("--------------------------------------");
                 Console.WriteLine("|        * Robô Tupiniquim    *     *|");
                 Console.WriteLine("--------------------------------------");
+
                 Console.WriteLine("|               MENU                 |");
                 Console.WriteLine("--------------------------------------");
                 Console.WriteLine("|              Sair - 0              |");
@@ -26,7 +27,12 @@ namespace Program
                 }
                 else if (m == 1)
                 {
-                    Console.Write("Qual o tamanho da Grid(X e Y)? ");
+                    Console.Clear();
+                    Console.WriteLine("--------------------------------------");
+                    Console.WriteLine("|        * Robô Tupiniquim    *     *|");
+                    Console.WriteLine("--------------------------------------");
+
+                    Console.Write("\nQual o tamanho da Grid(X e Y)? ");
                     string tg = Console.ReadLine()!;
                     char[] separadores = { ' ' };
                     string[] grid = tg.Split(separadores);
@@ -36,14 +42,14 @@ namespace Program
 
                     for (int j = 0; j < 2; j++)
                     {
-                        Console.WriteLine($"Qual o posicao inicial do robo {j + 1}? Ex: 4 7 S ");
+                        Console.WriteLine($"Qual o posicao inicial do robo {j + 1}? ");
                         string pi = Console.ReadLine()!;
                         string[] posicaoI = pi.Split(separadores);
                         int XI = int.Parse(posicaoI[0]), YI = int.Parse(posicaoI[1]);
                         char DA = char.Parse(posicaoI[2].ToUpper());
                         int posicaoXAtual = XI, posicaoYAtual = YI;
 
-                        Console.WriteLine("Qual a movimentacao do robo(E, D ou M)? Ex: EMMDDMEM ");
+                        Console.WriteLine("Qual a movimentacao do robo(E, D ou M)? ");
                         string movimentos = Console.ReadLine()!.ToUpper();
                         char[] movi = movimentos.ToCharArray();
 
@@ -90,13 +96,23 @@ namespace Program
                         }
                     }
 
-                    Console.WriteLine($"posicao final robo 1: {robo1}");
+                    Console.Clear();
+                    Console.WriteLine("--------------------------------------");
+                    Console.WriteLine("|        * Robô Tupiniquim    *     *|");
+                    Console.WriteLine("--------------------------------------");
+
+                    Console.WriteLine($"\nposicao final robo 1: {robo1}");
                     Console.WriteLine($"posicao final robo 2: {robo2}");
                     Console.ReadLine();
                 }
                 else if (m == 2)
                 {
-                    Console.WriteLine("Como digitar corretamente a Grid inicial:\n" +
+                    Console.Clear();
+                    Console.WriteLine("--------------------------------------");
+                    Console.WriteLine("|        * Robô Tupiniquim    *     *|");
+                    Console.WriteLine("--------------------------------------");
+
+                    Console.WriteLine("\nComo digitar corretamente a Grid inicial:\n" +
                         "- A grid inicial é basicamnete o plano cartesiano, só que sem a parte das numeros negativos.\n" +
                         "- Ela é formada pelos eixos X e Y, onde X é a horizontal e Y a vertical.\n" +
                         "- Na hora de escrever o tamanho da grid no console, digite: (numero | espaço | numero).\n" +
@@ -112,7 +128,7 @@ namespace Program
                         "- A opção M só se move um espaço para frente de forma reta, sem poder se mexer pros lados.\n" +
                         "- A quantidade de comandos de uma só vez é praticamente ilimitada, podendo ir de 1 comando a 50 se quiser.\n" +
                         "- Na hora de escrever isso no console, digite: (letra | letra | letra...     ... letra | letra).\n" +
-                        " Exemplo: EMEMMDDMMM");
+                        "- Exemplo: EMEMMDDMMM");
                     Console.ReadLine();
                 }
                 else
