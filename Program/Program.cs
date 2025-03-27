@@ -8,6 +8,7 @@ namespace Program
         {
             while (true)
             {
+                bool erro = false;
                 Console.Clear();
                 Console.WriteLine("--------------------------------------");
                 Console.WriteLine("|        * Robô Tupiniquim    *     *|");
@@ -19,14 +20,15 @@ namespace Program
                 Console.WriteLine("|            Utilizar - 1            |");
                 Console.WriteLine("|            Tutorial - 2            |");
                 Console.WriteLine("--------------------------------------");
-                byte m = byte.Parse(Console.ReadLine()!);
+                char m = char.Parse(Console.ReadLine()!);
 
-                if(m == 0)
+                if(m == '0')
                 {
                     break;
                 }
-                else if (m == 1)
+                else if (m == '1')
                 {
+                    erro = false;
                     Console.Clear();
                     Console.WriteLine("--------------------------------------");
                     Console.WriteLine("|        * Robô Tupiniquim    *     *|");
@@ -36,22 +38,82 @@ namespace Program
                     string tg = Console.ReadLine()!;
                     char[] separadores = { ' ' };
                     string[] grid = tg.Split(separadores);
+
+                    for (int i = 0;i < grid.Length;i++) {
+                        if (int.TryParse(grid[i], out int n))
+                        {
+                        }
+                        else
+                        {
+                            Console.WriteLine("Isso não é um número válido");
+                            Console.ReadLine();
+                            erro = true;
+                            break;
+                        }
+                    }
+                    if (erro)
+                    {
+                        continue;
+                    }
                     int XM = int.Parse(grid[0]), YM = int.Parse(grid[1]);
 
                     string robo1 = "", robo2 = "";
 
                     for (int j = 0; j < 2; j++)
                     {
+                        erro = false;
                         Console.WriteLine($"Qual o posicao inicial do robo {j + 1}? ");
                         string pi = Console.ReadLine()!;
                         string[] posicaoI = pi.Split(separadores);
+
+                        for (int i = 0; i < posicaoI.Length - 1; i++)
+                        {
+                            if (int.TryParse(posicaoI[i], out int n))
+                            {
+                            }
+                            else
+                            {
+                                Console.WriteLine("Posicao inicial invalida");
+                                Console.ReadLine();
+                                erro = true;
+                                break;
+                            }
+                        }
+                        if (erro)
+                        {
+                            j--;
+                            continue;
+                        }
+
                         int XI = int.Parse(posicaoI[0]), YI = int.Parse(posicaoI[1]);
                         char DA = char.Parse(posicaoI[2].ToUpper());
                         int posicaoXAtual = XI, posicaoYAtual = YI;
 
+                        if (XI < 0 || XI > XM || YI < 0 || YI > YM || (DA != 'N' && DA != 'S' && DA != 'O' && DA != 'L'))
+                        {
+                            Console.WriteLine("Posicao inicial invalida");
+                            j--;
+                            continue;
+                        }
+
                         Console.WriteLine("Qual a movimentacao do robo(E, D ou M)? ");
                         string movimentos = Console.ReadLine()!.ToUpper();
                         char[] movi = movimentos.ToCharArray();
+
+                        for(int i = 0; i < movi.Length; i++)
+                        {
+                            if (movi[i] != 'E' && movi[i] != 'D' && movi[i] != 'M')
+                            {
+                                erro = true;
+                                break;
+                            }
+                        }
+                        if(erro)
+                        {
+                            Console.WriteLine("Movimentacao do robo invalida");
+                            j--;
+                            continue;
+                        }
 
                         for (int i = 0; i < movi.Length; i++)
                         {
@@ -88,11 +150,25 @@ namespace Program
                         }
                         if (j == 0)
                         {
-                            robo1 = $"{posicaoXAtual} {posicaoYAtual} {DA}";
+                            if (posicaoXAtual < 0 || posicaoYAtual < 0 || posicaoXAtual > XM || posicaoYAtual > YM)
+                            {
+                                robo1 = "Erro";
+                            }
+                            else
+                            {
+                                robo1 = $"{posicaoXAtual} {posicaoYAtual} {DA}";
+                            }
                         }
                         else
                         {
-                            robo2 = $"{posicaoXAtual} {posicaoYAtual} {DA}";
+                            if (posicaoXAtual < 0 || posicaoYAtual < 0 || posicaoXAtual > XM || posicaoYAtual > YM)
+                            {
+                                robo2 = "Erro";
+                            }
+                            else
+                            {
+                                robo2 = $"{posicaoXAtual} {posicaoYAtual} {DA}";
+                            }
                         }
                     }
 
@@ -100,12 +176,25 @@ namespace Program
                     Console.WriteLine("--------------------------------------");
                     Console.WriteLine("|        * Robô Tupiniquim    *     *|");
                     Console.WriteLine("--------------------------------------");
-
-                    Console.WriteLine($"\nposicao final robo 1: {robo1}");
-                    Console.WriteLine($"posicao final robo 2: {robo2}");
+                    if(robo1 == "Erro")
+                    {
+                        Console.WriteLine("Robo 1 saiu da grid de simulacao");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"\nposicao final robo 1: {robo1}");
+                    }
+                    if (robo2 == "Erro")
+                    {
+                        Console.WriteLine("Robo 2 saiu da grid de simulacao");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"posicao final robo 2: {robo2}");
+                    }
                     Console.ReadLine();
                 }
-                else if (m == 2)
+                else if (m == '2')
                 {
                     Console.Clear();
                     Console.WriteLine("--------------------------------------");
@@ -134,6 +223,7 @@ namespace Program
                 else
                 {
                     Console.WriteLine("Opcao invalida");
+                    Console.ReadLine();
                 }
             }
         }
