@@ -18,7 +18,6 @@ namespace Program
         public static char ExibirMenu()
         {
             ExibirCabecalho();
-
             char m;
             Console.WriteLine("|               MENU                 |");
             Console.WriteLine("--------------------------------------");
@@ -31,7 +30,6 @@ namespace Program
         public static void ExibirRespostaFinal(string robo1, string robo2)
         {
             ExibirCabecalho();
-
             if (robo1 == "Erro")
             {
                 Console.WriteLine("Robo 1 saiu da grid de simulacao");
@@ -53,7 +51,6 @@ namespace Program
         public static void ExibirTutorial()
         {
             ExibirCabecalho();
-
             Console.WriteLine("\nComo digitar corretamente a Grid inicial:\n" +
                 "- A grid inicial é basicamnete o plano cartesiano, só que sem a parte das numeros negativos.\n" +
                 "- Ela é formada pelos eixos X e Y, onde X é a horizontal e Y a vertical.\n" +

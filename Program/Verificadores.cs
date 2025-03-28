@@ -15,6 +15,13 @@ namespace Program
             {
                 if (int.TryParse(grid[i], out int n))
                 {
+                    if (n < 0)
+                    {
+                        Console.WriteLine("Isso não é um número positivo");
+                        Console.ReadLine();
+                        erro = true;
+                        break;
+                    }
                 }
                 else
                 {
@@ -34,6 +41,13 @@ namespace Program
             {
                 if (int.TryParse(posicaoI[i], out int n))
                 {
+                    if (n < 0)
+                    {
+                        Console.WriteLine("Posicao inicial invalida");
+                        Console.ReadLine();
+                        erro = true;
+                        break;
+                    }
                 }
                 else
                 {
@@ -47,6 +61,7 @@ namespace Program
         }
         public static bool VerificarArrayMovimentacao(char[] movi, bool erro)
         {
+            erro = false;
             for (int i = 0; i < movi.Length; i++)
             {
                 if (movi[i] != 'E' && movi[i] != 'D' && movi[i] != 'M')

@@ -23,15 +23,19 @@ namespace Program
                 }
                 else if (m == '1')
                 {
-                    grid = PerguntasUsuario.PerguntarTamanhoGrid(separadores);
-                    erro = Verificadores.VerificarArrayGrid(grid, erro);
-
-                    if (erro)
+                    while (true)
                     {
-                        continue;
+                        grid = PerguntasUsuario.PerguntarTamanhoGrid(separadores);
+                        erro = Verificadores.VerificarArrayGrid(grid, erro);
+
+                        if (erro)
+                        {
+                            continue;
+                        }
+                        XM = int.Parse(grid[0]);
+                        YM = int.Parse(grid[1]);
+                        break;
                     }
-                    XM = int.Parse(grid[0]);
-                    YM = int.Parse(grid[1]);
 
                     for (int j = 0; j < 2; j++)
                     {
