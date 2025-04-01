@@ -79,11 +79,11 @@ namespace Program
                         #region Logica do robo
                         for (int i = 0; i < movi.Length; i++)
                         {
-                            LogicaRobo.MudarEixoDeDirecao(ref robo.DA, movi, i);
+                            robo.MudarEixoDeDirecao(movi, i);
                             if (movi[i] == 'M')
                             {
-                                LogicaRobo.AlterarDirecaoX(robo.DA, ref robo.posicaoXAtual);
-                                LogicaRobo.AlterarDirecaoY(robo.DA, ref robo.posicaoYAtual);
+                                robo.AlterarDirecaoX();
+                                robo.AlterarDirecaoY();
                             }
                         }
                         #endregion

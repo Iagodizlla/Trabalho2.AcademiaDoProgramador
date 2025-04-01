@@ -13,7 +13,7 @@ namespace Program
         public int posicaoYAtual;
         public char DA;
         #endregion
-        public static void MudarEixoDeDirecao(ref char DA, char[] movi, int i)
+        public void MudarEixoDeDirecao(char[] movi, int i)
         {
             if (movi[i] == 'E')
             {
@@ -36,7 +36,7 @@ namespace Program
                 }
             }
         }
-        public static void AlterarDirecaoY(char DA, ref int posicaoYAtual)
+        public void AlterarDirecaoY()
         {
             switch (DA)
             {
@@ -45,7 +45,7 @@ namespace Program
                 default: break;
             }
         }
-        public static void AlterarDirecaoX(char DA, ref int posicaoXAtual)
+        public void AlterarDirecaoX()
         {
             switch (DA)
             {
