@@ -8,7 +8,12 @@ namespace Program
 {
     public class LogicaRobo
     {
-        public static char MudarEixoDeDirecao(char DA, char[] movi, int i)
+        #region Objetos de robo
+        public int posicaoXAtual;
+        public int posicaoYAtual;
+        public char DA;
+        #endregion
+        public void MudarEixoDeDirecao(char[] movi, int i)
         {
             if (movi[i] == 'E')
             {
@@ -30,9 +35,8 @@ namespace Program
                     case 'L': DA = 'S'; break;
                 }
             }
-            return DA;
         }
-        public static int AlterarDirecaoY(char DA, int posicaoYAtual)
+        public void AlterarDirecaoY()
         {
             switch (DA)
             {
@@ -40,9 +44,8 @@ namespace Program
                 case 'S': posicaoYAtual--; break;
                 default: break;
             }
-            return posicaoYAtual;
         }
-        public static int AlterarDirecaoX(char DA, int posicaoXAtual)
+        public void AlterarDirecaoX()
         {
             switch (DA)
             {
@@ -50,7 +53,6 @@ namespace Program
                 case 'L': posicaoXAtual++; break;
                 default: break;
             }
-            return posicaoXAtual;
         }
     }
 }

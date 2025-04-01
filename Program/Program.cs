@@ -12,10 +12,11 @@ namespace Program
                 #region Variaveis
                 bool erro = false;
                 char[] separadores = {' '}, movi;
-                int XM, YM, posicaoXAtual, posicaoYAtual;
+                int XM, YM;
                 string[] grid, posicaoI;
-                char m, DA;
+                char m;
                 string robo1 = "", robo2 = "";
+                LogicaRobo robo = new LogicaRobo(); 
                 #endregion
                 #region Exibir menu inicial
                 m = Exibicao.ExibirMenu();
@@ -33,7 +34,7 @@ namespace Program
                     {
                         grid = PerguntasUsuario.PerguntarTamanhoGrid(separadores);
                         #region Verifica erro e atrbui valor
-                        erro = Verificadores.VerificarArrayGrid(grid, erro);
+                        Verificadores.VerificarArrayGrid(grid, ref erro);
 
                         if (erro)
                         {
@@ -48,17 +49,17 @@ namespace Program
                     {
                         posicaoI = PerguntasUsuario.PerguntarPosicaoInicial(separadores, j);
                         #region Verifica erro e atrbui valor
-                        erro = Verificadores.VerificarArrayPosicaoInicial(posicaoI, erro);
+                        Verificadores.VerificarArrayPosicaoInicial(posicaoI, ref erro);
 
                         if (erro)
                         {
                             j--;
                             continue;
                         }
-                        posicaoXAtual = int.Parse(posicaoI[0]);
-                        posicaoYAtual = int.Parse(posicaoI[1]);
-                        DA = char.Parse(posicaoI[2].ToUpper());
-                        if (Verificadores.VerificarIfPosicaoInicial(posicaoXAtual, posicaoYAtual, XM, YM, DA))
+                        robo.posicaoXAtual = int.Parse(posicaoI[0]);
+                        robo.posicaoYAtual = int.Parse(posicaoI[1]);
+                        robo.DA = char.Parse(posicaoI[2].ToUpper());
+                        if (Verificadores.VerificarIfPosicaoInicial(robo.posicaoXAtual, robo.posicaoYAtual, XM, YM, robo.DA))
                         {
                             Console.WriteLine("Posicao inicial invalida");
                             j--;
@@ -67,7 +68,7 @@ namespace Program
                         #endregion
                         movi = PerguntasUsuario.PerguntarMovimentacao();
                         #region Verifica erro e atrbui valor
-                        erro = Verificadores.VerificarArrayMovimentacao(movi, erro);
+                        Verificadores.VerificarArrayMovimentacao(movi, ref erro);
 
                         if(erro)
                         {
@@ -78,22 +79,22 @@ namespace Program
                         #region Logica do robo
                         for (int i = 0; i < movi.Length; i++)
                         {
-                            DA = LogicaRobo.MudarEixoDeDirecao(DA, movi, i);
+                            robo.MudarEixoDeDirecao(movi, i);
                             if (movi[i] == 'M')
                             {
-                                posicaoXAtual = LogicaRobo.AlterarDirecaoX(DA, posicaoXAtual);
-                                posicaoYAtual = LogicaRobo.AlterarDirecaoY(DA, posicaoYAtual);
+                                robo.AlterarDirecaoX();
+                                robo.AlterarDirecaoY();
                             }
                         }
                         #endregion
                         #region Atribuir posicao final do robo
                         if (j == 0)
                         {
-                            robo1 = Exibicao.AtribuirPosicaoFinalRobo(posicaoXAtual, posicaoYAtual, XM, YM, DA);
+                            robo1 = Exibicao.AtribuirPosicaoFinalRobo(robo.posicaoXAtual, robo.posicaoYAtual, XM, YM, robo.DA);
                         }
                         else
                         {
-                            robo2 = Exibicao.AtribuirPosicaoFinalRobo(posicaoXAtual, posicaoYAtual, XM, YM, DA);
+                            robo2 = Exibicao.AtribuirPosicaoFinalRobo(robo.posicaoXAtual, robo.posicaoYAtual, XM, YM, robo.DA);
                         }
                         #endregion
                     }

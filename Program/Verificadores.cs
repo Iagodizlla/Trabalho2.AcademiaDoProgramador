@@ -8,7 +8,7 @@ namespace Program
 {
     public class Verificadores
     {
-        public static bool VerificarArrayGrid(string[] grid, bool erro)
+        public static void VerificarArrayGrid(string[] grid, ref bool erro)
         {
             erro = false;
             for (int i = 0; i < grid.Length; i++)
@@ -31,9 +31,8 @@ namespace Program
                     break;
                 }
             }
-            return erro;
         }
-        public static bool VerificarArrayPosicaoInicial(string[] posicaoI, bool erro)
+        public static void VerificarArrayPosicaoInicial(string[] posicaoI, ref bool erro)
         {
             erro = false;
 
@@ -57,9 +56,8 @@ namespace Program
                     break;
                 }
             }
-            return erro;
         }
-        public static bool VerificarArrayMovimentacao(char[] movi, bool erro)
+        public static void VerificarArrayMovimentacao(char[] movi, ref bool erro)
         {
             erro = false;
             for (int i = 0; i < movi.Length; i++)
@@ -72,7 +70,6 @@ namespace Program
                     break;
                 }
             }
-            return erro;
         }
         public static bool VerificarIfPosicaoInicial(int XI, int YI, int XM, int YM, char DA)
         {
